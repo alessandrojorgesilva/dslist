@@ -1,2 +1,122 @@
-package com.devsuperior.dslist.entities;public class Game {
+package com.devsuperior.dslist.entities;
+
+import jakarta.persistence.*;
+
+import java.util.Objects;
+
+@Entity
+@Table(name = "games")
+public class Game {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String title;
+    private Double score;
+    @Column(name = "game_year")
+    private Integer year;
+    private String genre;
+    private String platforms;
+    @Column(columnDefinition = "TEXT")
+    private String shortDescription;
+    @Column(columnDefinition = "TEXT")
+    private String longDescription;
+    private String img_url;
+    public Game() {}
+
+    public Game(Long id, String title, Double score, Integer year, String genre, String platforms, String shortDescription, String longDescription, String img_url) {
+        this.id = id;
+        this.title = title;
+        this.score = score;
+        this.year = year;
+        this.genre = genre;
+        this.platforms = platforms;
+        this.shortDescription = shortDescription;
+        this.longDescription = longDescription;
+        this.img_url = img_url;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public Double getScore(){
+        return score;
+    }
+
+    public void setScore(Double score){
+        this.score = score;
+    }
+
+    public Integer getYear() {
+        return year;
+    }
+
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public String getPlatforms() {
+        return platforms;
+    }
+
+    public void setPlatforms(String platform) {
+        this.platforms = platform;
+    }
+
+    public String getShortDescription() {
+        return shortDescription;
+    }
+
+    public void setShortDescription(String shortDescription) {
+        this.shortDescription = shortDescription;
+    }
+
+    public String getLongDescription() {
+        return longDescription;
+    }
+
+    public void setLongDescription(String longDescription) {
+        this.longDescription = longDescription;
+    }
+
+    public String getImg_url() {
+        return img_url;
+    }
+
+    public void setImg_url(String img_url) {
+        this.img_url = img_url;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Game game = (Game) o;
+        return Objects.equals(id, game.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
