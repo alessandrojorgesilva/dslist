@@ -18,10 +18,9 @@ public class GameService {
 
     @Autowired
     private GameRepository gameRepository;
-    @Autowired
-    private GameListRepository gameListRepository;
 
-    public List<GameMinDto> searchAllGames() {
+
+    public List<GameMinDto> listarTodosGames() {
         return gameRepository.findAll()
                 .stream()
                 .map(GameMinDto::new)
@@ -34,10 +33,11 @@ public class GameService {
        return new GameDto(game);
     }
 
-    public List<GameListDto> buscarGameList() {
-        return gameListRepository.findAll()
+    public List<GameMinDto> listarGamePorLista(Long listaId) {
+        return gameRepository.buscarGamesPorLista(listaId)
                 .stream()
-                .map(GameListDto::new)
+                .map(GameMinDto::new)
                 .toList();
     }
+
 }

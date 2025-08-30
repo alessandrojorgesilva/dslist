@@ -9,14 +9,14 @@ public class BelongingPk {
     @ManyToOne
     private Game game;
     @ManyToOne
-    private GameList gameList;
+    private GameList list;
 
     public BelongingPk() {
     }
 
-    public BelongingPk(Game game, GameList gameList) {
+    public BelongingPk(Game game, GameList list) {
         this.game = game;
-        this.gameList = gameList;
+        this.list = list;
     }
 
     public Game getGame() {
@@ -28,10 +28,10 @@ public class BelongingPk {
     }
 
     public GameList getGameList() {
-        return gameList;
+        return list;
     }
 
     public void setGameList(GameList gameList) {
-        this.gameList = gameList;
+        this.list = gameList;
     }
 }

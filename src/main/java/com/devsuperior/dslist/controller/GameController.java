@@ -18,22 +18,15 @@ public class GameController {
     private GameService gameService;
 
     @GetMapping()
-    public ResponseEntity <List<GameMinDto>> searchAllGames(){
-        var games = gameService.searchAllGames();
+    public ResponseEntity <List<GameMinDto>> listar(){
+        var games = gameService.listarTodosGames();
         return ResponseEntity.ok(games);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<GameDto> buscarGameId(@PathVariable Long id){
+    public ResponseEntity<GameDto> listarGamePorId(@PathVariable Long id){
         var game = gameService.buscarGameId(id);
         return ResponseEntity.ok(game);
     }
-
-    @GetMapping("/lists")
-    public ResponseEntity<List<GameListDto>> buscarGameId(){
-        var gameList = gameService.buscarGameList();
-        return ResponseEntity.ok(gameList);
-    }
-
 
 }
