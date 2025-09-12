@@ -15,6 +15,15 @@ public interface GameRepository extends JpaRepository<Game, Long> {
             "ON g = b.belongingPkid.game " +
             "WHERE b.belongingPkid.list.id = :listaId " +
             "ORDER BY b.position")
-    public List<Game> buscarGamesPorLista(Long listaId);
+    public List<Game> buscarGamesPorListaJpql(Long listaId);
+
+    @Query(nativeQuery = true, value = """
+            SELECT * FROM games g
+            INNER JOIN Belongings b
+            ON g.id = b.game_id
+            WHERE b.list_id = :listaId
+            ORDER BY b.position
+            """)
+    public List<Game> buscarGamesPorListaSqlNative(Long listaId);
 
 }

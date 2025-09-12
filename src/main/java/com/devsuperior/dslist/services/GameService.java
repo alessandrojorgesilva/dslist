@@ -1,10 +1,7 @@
 package com.devsuperior.dslist.services;
 
 import com.devsuperior.dslist.dto.GameDto;
-import com.devsuperior.dslist.dto.GameListDto;
 import com.devsuperior.dslist.dto.GameMinDto;
-import com.devsuperior.dslist.entities.GameList;
-import com.devsuperior.dslist.repository.GameListRepository;
 import com.devsuperior.dslist.repository.GameRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +31,7 @@ public class GameService {
     }
 
     public List<GameMinDto> listarGamePorLista(Long listaId) {
-        return gameRepository.buscarGamesPorLista(listaId)
+        return gameRepository.buscarGamesPorListaSqlNative(listaId)
                 .stream()
                 .map(GameMinDto::new)
                 .toList();
